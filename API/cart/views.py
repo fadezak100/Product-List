@@ -3,8 +3,9 @@ from rest_framework.response import Response
 
 from .models import Cart, CartItem
 from .serializers import CartSerializer, CartItemSerializer
+from product.mixins import UserThrottlingMixin, CachePageMixin
 
-class CartViewSet(viewsets.ModelViewSet):
+class CartViewSet(UserThrottlingMixin, CachePageMixin, viewsets.ModelViewSet):
     queryset = Cart.objects.filter(id=1)
     serializer_class = CartSerializer
     pagination_class = None
@@ -12,7 +13,7 @@ class CartViewSet(viewsets.ModelViewSet):
     lookup_value_regex = '1'
 
 
-class CartItemViewSet(viewsets.ModelViewSet):
+class CartItemViewSet(UserThrottlingMixin, CachePageMixin, viewsets.ModelViewSet):
     queryset = CartItem.objects.all()
     serializer_class = CartItemSerializer
     pagination_class = None

@@ -44,7 +44,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework.authtoken',
     'corsheaders',
-    #internal apps
+    # internal apps
     'product',
     'category',
     'search',
@@ -52,7 +52,7 @@ INSTALLED_APPS = [
 ]
 
 CORS_ALLOWED_ORIGINS = ['http://localhost:3000', "http://127.0.0.1:3000",]
-CORS_ALLOW_CREDENTIALS = True 
+CORS_ALLOW_CREDENTIALS = True
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'corsheaders.middleware.CorsMiddleware',
@@ -143,6 +143,14 @@ ALGOLIA = {
     'INDEX_PREFIX': 'cfe'
 }
 REST_FRAMEWORK = {
-   "DEFAULT_PAGINATION_CLASS": "rest_framework.pagination.LimitOffsetPagination",
-   "PAGE_SIZE": 5
+    "DEFAULT_PAGINATION_CLASS": "rest_framework.pagination.LimitOffsetPagination",
+    "PAGE_SIZE": 5,
+    "DEFAULT_THROTTLE_CLASSES": [
+        "rest_framework.throttling.AnonRateThrottle",
+        "rest_framework.throttling.UserRateThrottle"
+    ],
+    "DEFAULT_THROTTLE_RATES": {
+        "anon": "60/minute",
+        "user": "120/minute"
+    }
 }

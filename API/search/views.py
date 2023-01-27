@@ -1,15 +1,15 @@
-from django.shortcuts import render
 from rest_framework import generics
 from rest_framework.response import Response
 
-from . import client
 from product.models import Product
 from product.serializers import ProductSerializer
+from product.mixins import UserThrottlingMixin, CachePageMixin
 from category.models import Category
-from django.db.models import Q
+from . import client
 
-class SearchListAPIView(generics.GenericAPIView):
-    
+
+
+class SearchListAPIView(UserThrottlingMixin, CachePageMixin, generics.GenericAPIView):
     def get(self, request, *args, **kwargs):
         query = request.GET.get('q')
         results = client.perform_search(query)
@@ -20,8 +20,9 @@ class SearchListAPIView(generics.GenericAPIView):
         return Response(results)
 
 
-class CategorySearchListAPIView(generics.GenericAPIView):
+class CategorySearchListAPIView(UserThrottlingMixin, CachePageMixin, generics.GenericAPIView):
     queryset = Product.objects.all()
+
 
     def get(self, request, *args, **kwargs):
         params = kwargs['slug']
@@ -43,7 +44,7 @@ class CategorySearchListAPIView(generics.GenericAPIView):
                 }) 
 
 
-class SortProducts(generics.GenericAPIView):
+class SortProducts(UserThrottlingMixin, CachePageMixin, generics.GenericAPIView):
     queryset = Product.objects.all()
 
     def get(self, request, *args, **kwargs):
