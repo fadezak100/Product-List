@@ -19,14 +19,20 @@ class SearchListAPIView(generics.GenericAPIView):
 
         return Response(results)
 
+
 class CategorySearchListAPIView(generics.GenericAPIView):
     queryset = Product.objects.all()
 
     def get(self, request, *args, **kwargs):
         params = kwargs['slug']
+        sort_by = request.GET.get('q')
+        products_query = None
         try: 
             category = Category.objects.get(name=params.lower())
-            products_query = Product.objects.filter(category=category)
+            if sort_by == "name" or sort_by == "price":
+                products_query = Product.objects.filter(category=category).order_by(sort_by)
+            else:
+                products_query = Product.objects.filter(category=category)
             products_list = ProductSerializer(products_query, many=True).data
             return Response(products_list)
         except Category.DoesNotExist:
