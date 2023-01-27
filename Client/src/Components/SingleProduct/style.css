@@ -1,0 +1,135 @@
+a {
+  text-decoration: none;
+  color: black;
+}
+
+.product-container {
+  display: flex;
+  margin: 2rem 4rem;
+  border: 1px soild var(--category-name-text);
+  border-radius: 1rem;
+  flex-wrap: wrap;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.product-img-div {
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+  display: flex;
+}
+
+.product-info-div {
+  margin-left: 4rem;
+}
+
+.product-category {
+  font-size: 1.2rem;
+  margin-top: 2rem;
+  margin-bottom: 1.5rem;
+  color: var(--category-name-text);
+}
+
+.product-title {
+  font-size: 2.5rem;
+  color: black;
+  margin-bottom: 2rem;
+}
+
+.product-info-div {
+  flex: 1;
+}
+
+.product-description {
+  line-height: 1.4;
+  margin-bottom: 3rem;
+  margin-right: 3rem;
+}
+
+.btn-div {
+  display: flex;
+}
+
+.btn-class {
+  width: 10rem;
+  padding: 1rem;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  margin-right: 1rem;
+  margin-bottom: 2rem;
+  border-radius: 1rem;
+}
+
+.buy-btn {
+  background-color: black;
+  color: white;
+}
+
+.buy-btn:hover {
+  color: white;
+  background: var(--button-text-color);
+}
+
+.cart-btn {
+  background-color: var(--button-background-color);
+  color: var(--button-text-color);
+}
+
+.cart-btn:hover {
+  background-color: black;
+  color: white;
+}
+
+.img {
+  aspect-ratio: 1.4 / 1;
+  border-radius: 1rem;
+  margin: 1rem;
+}
+
+@media only screen and (max-width: 700px) {
+  .product-container {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 1rem;
+  }
+
+  .product-info-div {
+    display: flex;
+    align-items: center;
+    justify-self: center;
+    flex-direction: column;
+    margin: 1rem;
+  }
+
+  .btn-div {
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .btn-class {
+    margin: 0;
+    width: 100%;
+    margin-bottom: 1rem;
+  }
+
+  .product-description {
+    margin: 0;
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+  .img {
+    width: 80%;
+    aspect-ratio: 0.7/ 0.5;
+    margin: 2rem;
+  }
+  .product-category {
+    text-align: left;
+    justify-self: start;
+  }
+  .product-title {
+    text-align: center;
+  }
+}

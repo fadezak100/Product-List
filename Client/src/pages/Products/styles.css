@@ -1,0 +1,88 @@
+.product-page {
+    display: flex;
+    flex-direction: column-reverse;
+    gap: 2rem;
+  }
+  
+  .product-page .product-container .productCard-card {
+    margin: 2rem 0;
+  }
+  .product-page .product-container {
+    justify-content: center;
+    gap: 2rem;
+  }
+  .product-page .filters {
+    width: 90%;
+    margin: 3rem auto 0;
+    padding: 1rem;
+    box-shadow: rgb(0 0 0 / 35%) 0px 5px 15px;
+    border-radius: 1rem;
+  }
+  .product-page .filters label {
+    display: block;
+  }
+  
+  .filters {
+    display: flex;
+    flex-direction: column;
+  }
+  .categories {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+  
+  }
+  .categories-title {
+    margin-top: 1rem;
+  }
+  .price {
+    display: flex;
+    gap: 1rem;
+  }
+  .price-title {
+    margin-top: 0.3rem;
+    margin-bottom: 0.5rem;
+  }
+  .radio-btn {
+    margin-left: 0.5rem;
+  }
+  
+  /* pagination */
+  .pagination {
+    display: flex;
+    border-radius: 0.4rem;
+    padding: 1.5rem 0;
+    margin: 0rem 4rem 2rem 4rem;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    background-color: white;
+  }
+  .pagination button {
+    font-size: 0.9rem;
+    font-weight: bold;
+    padding: 5px 15px;
+    background-color: var(--accent-color);
+    color: var(--main-color);
+    cursor: pointer;
+  }
+
+  .pagination button:hover {
+    color: grey;
+    cursor: pointer;
+  }
+  
+  
+  .pagination button {
+    border: none;
+  }
+
+  @media only screen and (max-width: 700px) {
+    .pagination {
+      margin: 1rem;
+    }
+  
+  }
+  
